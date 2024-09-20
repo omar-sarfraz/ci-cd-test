@@ -17,4 +17,4 @@ jobs:
                   run-id: ${{ github.event.workflow_run.id }}
                   github-token: ${{ github.token }}
                   name: Build
-                  path: /home/ec2-user/test
+                  path: /home/ec2-user/projects-listing/React_Project/dist

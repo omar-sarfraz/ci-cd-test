@@ -11,10 +11,16 @@ jobs:
         runs-on: self-hosted
 
         steps:
+            - name: Remove existing artifacts
+              run: |
+                  if [ -d "/home/ec2-user/projects-listing/React_Project/dist" ]; then
+                    rm -rf /home/ec2-user/projects-listing/React_Project/dist
+                  fi
+
             - name: Download Build Artifact
               uses: actions/download-artifact@v4
               with:
                   run-id: ${{ github.event.workflow_run.id }}
-                  github-token: ${{ github.token }}
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
                   name: Build
                   path: /home/ec2-user/projects-listing/React_Project/dist
